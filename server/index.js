@@ -8,6 +8,8 @@ import bodyParser from 'body-parser';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
+import { SessionAPI } from './route'
+
 const app = express();
 const expressPort = 8080;
 const webpackPort = 4000;
@@ -30,11 +32,12 @@ app.use(session({
 }));
 
 // Router Controll
+app.use('/auth', SessionAPI );
 app.use('/', express.static(path.join(__dirname, './../public')));
-app.get('*', (req,res)=>{
-  return res.status(200).sendFile(path.join(__dirname, './../public'));
+app.get('*', (req, res, next)=>{
+  if( req.path.split('/')[1] === 'static') return next();
+  res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
-
 // PRODUCTION
 app.listen(expressPort, ()=>{
   console.log('[express] Server is running on port:', expressPort);

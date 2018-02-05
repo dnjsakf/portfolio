@@ -4,7 +4,7 @@ const { resolve } = require("path");
 
 module.exports = {
     entry:[ 
-        'react-hot-loader/patch', 
+        'react-hot-loader/patch',
         'babel-polyfill',
         './src/index.js', 
         './src/style.css'
@@ -16,9 +16,9 @@ module.exports = {
     },
     plugins:[
         new HtmlWebpackPlugin({
-            template: `./public/index.html`
+            template: './public/index.dev.html'     // For hot-loader
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),   // For hot-loader
         new webpack.NamedModulesPlugin(),
         new webpack.LoaderOptionsPlugin({
           minimize: true
@@ -34,11 +34,12 @@ module.exports = {
             comments:true,
           }
         }),
-        new webpack.DefinePlugin({
-          'process.env':{
-            NODE_ENV: JSON.stringify('production')
-          }
-        }),
+        // package.json > scripts 에 작성해둬서 필요없을듯.
+        // new webpack.DefinePlugin({
+        //   'process.env':{
+        //     NODE_ENV: JSON.stringify('production')
+        //   }
+        // }),
     ],
     module: {
         rules:[

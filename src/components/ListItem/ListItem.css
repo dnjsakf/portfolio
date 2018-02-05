@@ -1,0 +1,11 @@
+li {
+    line-height: 1.4em;
+    border-bottom: 1px solid gray;
+}
+li:hover {
+    background-color: lightblue;
+}
+li > a {
+    color: black;
+    font-size: 30px;
+}

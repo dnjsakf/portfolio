@@ -24,6 +24,8 @@ var _webpackDevServer = require('webpack-dev-server');
 
 var _webpackDevServer2 = _interopRequireDefault(_webpackDevServer);
 
+var _route = require('./route');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -48,11 +50,12 @@ app.use((0, _expressSession2.default)({
 }));
 
 // Router Controll
+app.use('/auth', _route.SessionAPI);
 app.use('/', _express2.default.static(_path2.default.join(__dirname, './../public')));
-app.get('*', function (req, res) {
-  return res.status(200).sendFile(_path2.default.join(__dirname, './../public'));
+app.get('*', function (req, res, next) {
+  if (req.path.split('/')[1] === 'static') return next();
+  res.sendFile(_path2.default.resolve(__dirname, '../public/index.html'));
 });
-
 // PRODUCTION
 app.listen(expressPort, function () {
   console.log('[express] Server is running on port:', expressPort);
