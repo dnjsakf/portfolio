@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const sessionTypes = {
+export const types = {
     SESSION_RUNNING: "SESSION_RUNNING",
     SESSION_SUCCESS: "SESSION_SUCCESS",
     SESSION_FAILURE: "SESSION_FAILURE"
@@ -8,18 +8,18 @@ export const sessionTypes = {
 export function getSession(){
     return ( dispatch )=>{
 
-        dispatch({type: sessionTypes.SESSION_RUNNING})
+        dispatch({type: types.SESSION_RUNNING})
 
         const request = axios.get("/auth/session");
         request.then((response)=>{
             dispatch({
-                type: sessionTypes.SESSION_SUCCESS,
+                type: types.SESSION_SUCCESS,
                 data: response.data
             });
         });
         request.catch((error)=>{
             dispatch({
-                type: sessionTypes.SESSION_FAILURE,
+                type: types.SESSION_FAILURE,
                 data: error.response.data
             })
         });    
@@ -28,18 +28,18 @@ export function getSession(){
 export function setSession( data ){
     return ( dispatch )=>{
 
-        dispatch({type: sessionTypes.SESSION_RUNNING})
+        dispatch({type: types.SESSION_RUNNING})
 
         const request = axios.post("/auth/session", { data } );
         request.then((response)=>{
             dispatch({
-                type: sessionTypes.SESSION_SUCCESS,
+                type: types.SESSION_SUCCESS,
                 data: response.data
             });
         });
         request.catch((error)=>{
             dispatch({
-                type: sessionTypes.SESSION_FAILURE,
+                type: types.SESSION_FAILURE,
                 data: error.response.data
             })
         });    

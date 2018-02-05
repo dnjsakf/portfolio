@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { ListItem } from './../components'
+import { ListItem } from './../../components'
 
-class Home extends Component { 
+class MenuList extends Component { 
     constructor(props, context){
         super(props, context);
 
@@ -31,24 +31,23 @@ class Home extends Component {
             <ul className="menu_list">
                 <li><a onClick={ (event)=>{ this.onGetSessionHandler() } } >getSession</a></li>
                 <li><a onClick={ (event)=>{ this.onSetSessionHandler({"username":"Heo"}) } } >setSession</a></li>
-                <ListItem className="main_link" to={"/"} active={ this.context.router.isActive("/", true) }>Home</ListItem>
-                <ListItem className="main_link" to={"/page1"} active={ this.context.router.isActive("/page1") }>Page1</ListItem>
-                <ListItem className="main_link" to={"/page2"} active={ this.context.router.isActive("/page2") }>Page2</ListItem>
+                <ListItem className="main_link" to={"/"} active={ false }>Home</ListItem>
+                <ListItem className="main_link" to={"/page1"} active={ false }>Page1</ListItem>
+                <ListItem className="main_link" to={"/page2"} active={ false }>Page2</ListItem>
+                <ListItem className="main_link" to={"/page/3"} active={ false }>Page3</ListItem>
+                <ListItem className="main_link" to={"/page/4"} active={ false }>Page4</ListItem>
             </ul>
         );
     }
 }
-Home.contextTypes = {
+MenuList.contextTypes = {
     router: PropTypes.object
 }
-Home.defaultProps = {
-    location: "Home"
+MenuList.defaultProps = {
+    location: "MenuList"
 }
-import { 
-    getSession, 
-    setSession 
-} from './../actions'
 
+import { SessionAct } from './../../actions'
 const mapStateToProps = ( state )=>{
     return {
         session:{
@@ -59,11 +58,19 @@ const mapStateToProps = ( state )=>{
 }
 const mapDispatchToProps = ( dispatch )=>{
     return {
-        getSessionHandler: ()=>{ dispatch( getSession() ); },
-        setSessionHandler: ( data )=>{ dispatch( setSession(data) ); },
+        getSessionHandler: ()=>{ dispatch( SessionAct.getSession() ); },
+        setSessionHandler: ( data )=>{ dispatch( SessionAct.setSession(data) ); },
     }
 }
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Home);
+)(MenuList);
+
+/**
+ * 
+                <ListItem className="main_link" to={"/"} active={ this.context.router.isActive("/", true) }>Home</ListItem>
+                <ListItem className="main_link" to={"/page1"} active={ this.context.router.isActive("/page1") }>Page1</ListItem>
+                <ListItem className="main_link" to={"/page2"} active={ this.context.router.isActive("/page2") }>Page2</ListItem>
+ * 
+ */

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import './ListItem.css'
 

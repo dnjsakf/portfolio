@@ -1,4 +1,4 @@
-import { sessionTypes as types } from './../actions'
+import { SessionAct } from './../actions'
 
 const initializeState = {
     status: "READY",
@@ -6,18 +6,18 @@ const initializeState = {
 }
 export default function SessionReducer(state = initializeState, action){
     switch( action.type ){
-        case types.SESSION_RUNNING:
+        case SessionAct.types.SESSION_RUNNING:
             return Object.assign( {}, state, {
                 status: "RUNNING",
             });
             break;
-        case types.SESSION_SUCCESS:
+        case SessionAct.types.SESSION_SUCCESS:
             return Object.assign( {}, state, {
                 status: "SUCCESS",
                 data: action.data
             });
             break;
-        case types.SESSION_FAILURE:
+        case SessionAct.types.SESSION_FAILURE:
             return Object.assign( {}, state, {
                 status: "FAILURE"
             });

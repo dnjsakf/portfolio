@@ -844,7 +844,7 @@
     /******/
     /******/
     /******/
-    var hotCurrentChildModule, hotDeferred, hotUpdate, hotUpdateNewHash, hotApplyOnUpdate = !0, hotCurrentHash = "356afd8ae7b800a1301c", hotRequestTimeout = 1e4, hotCurrentModuleData = {}, hotCurrentParents = [], hotCurrentParentsTemp = [], hotStatusHandlers = [], hotStatus = "idle", hotWaitingFiles = 0, hotChunksLoading = 0, hotWaitingFilesMap = {}, hotRequestedFilesMap = {}, hotAvailableFilesMap = {}, installedModules = {};
+    var hotCurrentChildModule, hotDeferred, hotUpdate, hotUpdateNewHash, hotApplyOnUpdate = !0, hotCurrentHash = "e733e1fbbd5806e2bd07", hotRequestTimeout = 1e4, hotCurrentModuleData = {}, hotCurrentParents = [], hotCurrentParentsTemp = [], hotStatusHandlers = [], hotStatus = "idle", hotWaitingFiles = 0, hotChunksLoading = 0, hotWaitingFilesMap = {}, hotRequestedFilesMap = {}, hotAvailableFilesMap = {}, installedModules = {};
     /******/
     /******/
     // Load entry module and return exports
@@ -29965,17 +29965,17 @@ object-assign
         function getSession() {
             return function(dispatch) {
                 dispatch({
-                    type: sessionTypes.SESSION_RUNNING
+                    type: types.SESSION_RUNNING
                 });
                 var request = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("/auth/session");
                 request.then(function(response) {
                     dispatch({
-                        type: sessionTypes.SESSION_SUCCESS,
+                        type: types.SESSION_SUCCESS,
                         data: response.data
                     });
                 }), request.catch(function(error) {
                     dispatch({
-                        type: sessionTypes.SESSION_FAILURE,
+                        type: types.SESSION_FAILURE,
                         data: error.response.data
                     });
                 });
@@ -29984,38 +29984,40 @@ object-assign
         function setSession(data) {
             return function(dispatch) {
                 dispatch({
-                    type: sessionTypes.SESSION_RUNNING
+                    type: types.SESSION_RUNNING
                 });
                 var request = __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/auth/session", {
                     data: data
                 });
                 request.then(function(response) {
                     dispatch({
-                        type: sessionTypes.SESSION_SUCCESS,
+                        type: types.SESSION_SUCCESS,
                         data: response.data
                     });
                 }), request.catch(function(error) {
                     dispatch({
-                        type: sessionTypes.SESSION_FAILURE,
+                        type: types.SESSION_FAILURE,
                         data: error.response.data
                     });
                 });
             };
         }
-        /* harmony export (binding) */
-        __webpack_require__.d(__webpack_exports__, "b", function() {
-            return sessionTypes;
+        Object.defineProperty(__webpack_exports__, "__esModule", {
+            value: !0
+        }), /* harmony export (binding) */
+        __webpack_require__.d(__webpack_exports__, "types", function() {
+            return types;
         }), /* harmony export (immutable) */
-        __webpack_exports__.a = getSession, /* harmony export (immutable) */
-        __webpack_exports__.c = setSession;
+        __webpack_exports__.getSession = getSession, /* harmony export (immutable) */
+        __webpack_exports__.setSession = setSession;
         /* harmony import */
-        var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js"), __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__), sessionTypes = {
+        var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__("./node_modules/axios/index.js"), __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__), types = {
             SESSION_RUNNING: "SESSION_RUNNING",
             SESSION_SUCCESS: "SESSION_SUCCESS",
             SESSION_FAILURE: "SESSION_FAILURE"
         };
         !function() {
-            "undefined" != typeof __REACT_HOT_LOADER__ && (__REACT_HOT_LOADER__.register(sessionTypes, "sessionTypes", "C:/Users/dnjsa/Desktop/NODE/PP/src/actions/Session.act.js"), 
+            "undefined" != typeof __REACT_HOT_LOADER__ && (__REACT_HOT_LOADER__.register(types, "types", "C:/Users/dnjsa/Desktop/NODE/PP/src/actions/Session.act.js"), 
             __REACT_HOT_LOADER__.register(getSession, "getSession", "C:/Users/dnjsa/Desktop/NODE/PP/src/actions/Session.act.js"), 
             __REACT_HOT_LOADER__.register(setSession, "setSession", "C:/Users/dnjsa/Desktop/NODE/PP/src/actions/Session.act.js"));
         }();
@@ -30026,15 +30028,9 @@ object-assign
         "use strict";
         /* harmony import */
         var __WEBPACK_IMPORTED_MODULE_0__Session_act_js__ = __webpack_require__("./src/actions/Session.act.js");
-        /* harmony reexport (binding) */
+        /* harmony reexport (module object) */
         __webpack_require__.d(__webpack_exports__, "a", function() {
-            return __WEBPACK_IMPORTED_MODULE_0__Session_act_js__.a;
-        }), /* harmony reexport (binding) */
-        __webpack_require__.d(__webpack_exports__, "c", function() {
-            return __WEBPACK_IMPORTED_MODULE_0__Session_act_js__.c;
-        }), /* harmony reexport (binding) */
-        __webpack_require__.d(__webpack_exports__, "b", function() {
-            return __WEBPACK_IMPORTED_MODULE_0__Session_act_js__.b;
+            return __WEBPACK_IMPORTED_MODULE_0__Session_act_js__;
         });
     },
     /***/
@@ -30247,10 +30243,10 @@ object-assign
         }, mapDispatchToProps = function(dispatch) {
             return {
                 getSessionHandler: function() {
-                    dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions__.a)());
+                    dispatch(__WEBPACK_IMPORTED_MODULE_3__actions__.a.getSession());
                 },
                 setSessionHandler: function(data) {
-                    dispatch(Object(__WEBPACK_IMPORTED_MODULE_3__actions__.c)(data));
+                    dispatch(__WEBPACK_IMPORTED_MODULE_3__actions__.a.setSession(data));
                 }
             };
         }, _default = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__.b)(mapStateToProps, mapDispatchToProps)(Home);
@@ -30525,18 +30521,18 @@ object-assign
         function SessionReducer() {
             var state = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : initializeState, action = arguments[1];
             switch (action.type) {
-              case __WEBPACK_IMPORTED_MODULE_0__actions__.b.SESSION_RUNNING:
+              case __WEBPACK_IMPORTED_MODULE_0__actions__.a.types.SESSION_RUNNING:
                 return Object.assign({}, state, {
                     status: "RUNNING"
                 });
 
-              case __WEBPACK_IMPORTED_MODULE_0__actions__.b.SESSION_SUCCESS:
+              case __WEBPACK_IMPORTED_MODULE_0__actions__.a.types.SESSION_SUCCESS:
                 return Object.assign({}, state, {
                     status: "SUCCESS",
                     data: action.data
                 });
 
-              case __WEBPACK_IMPORTED_MODULE_0__actions__.b.SESSION_FAILURE:
+              case __WEBPACK_IMPORTED_MODULE_0__actions__.a.types.SESSION_FAILURE:
                 return Object.assign({}, state, {
                     status: "FAILURE"
                 });

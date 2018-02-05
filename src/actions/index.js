@@ -1,14 +1,7 @@
-import { 
-    getSession,
-    setSession,
-    sessionTypes
-} from './Session.act.js'
+import * as SessionAct from './Session.act.js'
 
 export {
-    // Session
-    getSession,
-    setSession,
-    sessionTypes
+    SessionAct
 
     // Others...
 }

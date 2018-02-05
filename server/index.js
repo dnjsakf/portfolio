@@ -38,6 +38,7 @@ app.get('*', (req, res, next)=>{
   if( req.path.split('/')[1] === 'static') return next();
   res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
+
 // PRODUCTION
 app.listen(expressPort, ()=>{
   console.log('[express] Server is running on port:', expressPort);
@@ -49,12 +50,14 @@ if(process.env.NODE_ENV === 'development'){
   config.entry.push('webpack-dev-server/client?http://localhost:4000');
   config.entry.push('webpack/hot/only-dev-server');
   config.devtool = 'inline-source-map';
-
   const options = {
       hot: true,
       host: "localhost",
       contentBase: './public',
-      publicPath: '/'
+      publicPath: '/',
+      proxy: {
+        "**": "http://localhost:8080"
+      }
   };
   WebpackDevServer.addDevServerEntrypoints(config, options);
   const compiler = webpack(config);
