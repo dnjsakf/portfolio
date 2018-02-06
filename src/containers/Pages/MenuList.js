@@ -31,11 +31,11 @@ class MenuList extends Component {
             <ul className="menu_list">
                 <li><a onClick={ (event)=>{ this.onGetSessionHandler() } } >getSession</a></li>
                 <li><a onClick={ (event)=>{ this.onSetSessionHandler({"username":"Heo"}) } } >setSession</a></li>
-                <ListItem className="main_link" to={"/"} active={ false }>Home</ListItem>
-                <ListItem className="main_link" to={"/page1"} active={ false }>Page1</ListItem>
-                <ListItem className="main_link" to={"/page2"} active={ false }>Page2</ListItem>
-                <ListItem className="main_link" to={"/page/3"} active={ false }>Page3</ListItem>
-                <ListItem className="main_link" to={"/page/4"} active={ false }>Page4</ListItem>
+                <ListItem className="main_link" to={"/"} active={ '' }>Home</ListItem>
+                <ListItem className="main_link" to={"/page1"} active={ '' }>Page1</ListItem>
+                <ListItem className="main_link" to={"/page2"} active={ '' }>Page2</ListItem>
+                <ListItem className="main_link" to={"/page/3"} active={ '' }>Page3</ListItem>
+                <ListItem className="main_link" to={"/page/4"} active={ '' }>Page4</ListItem>
             </ul>
         );
     }
@@ -66,11 +66,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(MenuList);
-
-/**
- * 
-                <ListItem className="main_link" to={"/"} active={ this.context.router.isActive("/", true) }>Home</ListItem>
-                <ListItem className="main_link" to={"/page1"} active={ this.context.router.isActive("/page1") }>Page1</ListItem>
-                <ListItem className="main_link" to={"/page2"} active={ this.context.router.isActive("/page2") }>Page2</ListItem>
- * 
- */

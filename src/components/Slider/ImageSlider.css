@@ -1,0 +1,24 @@
+.ImageSlider {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+}
+.ImageSlider::-webkit-scrollbar{
+    display:none;
+}
+
+.ImageSlider .SliderWrapper {
+    width: 500%;
+    height: 100%;
+}
+
+.ImageSlider .SliderItem {
+    float: left;
+}
