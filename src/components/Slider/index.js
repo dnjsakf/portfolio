@@ -1,1 +1,1 @@
-export { default as ImageSlider } from './ImageSlider.js'
+export { default as ImageSlider } from './ImageSlider/ImageSlider.js'

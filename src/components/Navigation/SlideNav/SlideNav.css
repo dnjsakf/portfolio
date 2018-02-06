@@ -6,23 +6,23 @@ ul.SideNav {
     margin: 0;
     list-style-type: none;
 }
-ul.SideNav.center {
+ul.SideNav.vertical {
     bottom: 10px;
 }
-ul.SideNav.right {
+ul.SideNav.horizontal {
     right: 10px;
 }
 ul.SideNav li {
     width: 15px;
     height: 15px;
     border-radius: 100%;
-    background-color: gray;
+    background-color: rgba(100,100,100,0.5);
 }
 
-ul.SideNav.center li { float: left; }
-ul.SideNav.center li:not(:last-child) { margin-right: 8px; }
-ul.SideNav.right li:not(:last-child) { margin-bottom: 8px; }
+ul.SideNav.vertical li { float: left; }
+ul.SideNav.vertical li:not(:last-child) { margin-right: 8px; }
+ul.SideNav.horizontal li:not(:last-child) { margin-bottom: 8px; }
 
 ul.SideNav li a { display: block; width: 100%; height: 100%; }
-ul.SideNav li.active { background-color: rgb(50,50,50); }
-ul.SideNav li:hover { background-color: white; box-shadow: 2px 2px darkgray; }
+ul.SideNav li.active { background-color: rgba(255,255,255,0.8); }
+ul.SideNav li:hover { background-color: lightgray; box-shadow: 2px 2px darkgray; }

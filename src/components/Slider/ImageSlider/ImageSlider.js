@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './ImageSlider.css'
 
 const defaultProps = {
@@ -17,8 +18,8 @@ const SliderItem = ( { page, url, active, size } )=>{
         </div>
     )
 }
-const ImageSlider = ({ parentOffset, activePage, imageURLs })=>{
-    let items = imageURLs.map((url, page)=>{
+const ImageSlider = ( { parentOffset, activePage, imageURLs, onMovePage })=>{
+    const items = imageURLs.map((url, page)=>{
         return (
             <SliderItem 
                 key={page}
@@ -33,7 +34,7 @@ const ImageSlider = ({ parentOffset, activePage, imageURLs })=>{
         width: `${items.length*101}%`,
     }
     return (
-        <div className="ImageSlider">
+        <div className="ImageSlider" onWheel={ event=>onMovePage(event) }>
             <div className="SliderWrapper" style={wrapperSize}>
                 { items }
             </div>

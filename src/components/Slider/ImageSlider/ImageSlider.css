@@ -20,5 +20,9 @@
 }
 
 .ImageSlider .SliderItem {
+    display: none;
     float: left;
+}
+.ImageSlider .SliderItem.active {
+    display: block;
 }
